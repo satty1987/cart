@@ -5,7 +5,7 @@
 
       <div class="head  p-t-15 p-b-15">
         <div class="row">
-          <div class="col-sm-6  text-uppercase "><span class="d-inline d-sm-none" >Your shopping bag</span> {{cartCount}} Items </div>
+          <div class="col-sm-6  text-uppercase "><span class="d-block d-sm-none" >Your shopping bag</span> {{cartCount}} Items </div>
           <div class="col-2  text-uppercase text-right d-none d-sm-block"> Size</div>
           <div class="col-2 text-uppercase text-right d-none d-sm-block">QTY </div>
           <div class="col-2  text-uppercase text-right d-none d-sm-block">Price </div>
@@ -31,8 +31,8 @@
               </div>
 
           </div>
-          <div class="col-2 col-xs-12 col-sm-2 text-uppercase text-right d-none d-sm-block"> {{item.p_selected_size.code}}</div>
-          <div class="col-2 col-xs-12 col-sm-2 text-uppercase text-right d-none d-sm-block">
+          <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block"> {{item.p_selected_size.code}}</div>
+          <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block">
             <input type="number" min="1" max="5" [(ngModel)]="item.p_quantity"
            class="qty" (ngModelChange)="onChangeQty($event,i)"> </div>
           <div class="col-2 col-xs-12 col-sm-2 text-uppercase text-right d-none d-sm-block ">
@@ -50,7 +50,7 @@
       <!-- total section -->
       <div class="col-md-12 col-xs-12 col-sm-12  p-0 m-t-25">
         <div class="row">
-          <div class="col-md-8 col-xs-12 col-sm-12 order-2 ml-auto  " *ngIf="cartObject.length>0">
+          <div class="col-md-12 col-lg-8 col-sm-12 order-lg-2 ml-auto  " *ngIf="cartObject.length>0">
             <div class="row">
               <div class="col-md-5 col-xs-12 col-sm-12 ">
                 <p class="text-uppercase  text-center text-sm-left">enter promotion code or gift card</p>
@@ -130,7 +130,7 @@
 
             </div>
           </div>
-          <div class="col-md-2 col-xs-12 col-sm-12 d-none d-sm-block ">
+          <div class="col-md-12 col-lg-2 col-sm-12 d-none d-sm-block ">
             <p class="bold "> <a href="" class="lead text-gray bold">Need Help or have questions ?</a></p>
             <p> <a href="" class=" text-gray ">Call Customer Service at 1-800-555-5555</a></p>
             <p> <a href="" class=" text-gray ">Chat with one of our stylists
@@ -159,8 +159,8 @@
 
       <div class="modal-body">
         <div class="row p-t-25">
-             <div class="col-md-6 order-md-2 text-center"><img class="img-fluid" src="../../../assets/images/T{{modelContent.p_id}}.jpg" /></div>
-          <div class=" ml-auto col-md-5 text-center">
+             <div class="col-lg-6 col-md-12 order-lg-2 text-center"><img class="img-fluid" src="../../../assets/images/T{{modelContent.p_id}}.jpg" /></div>
+          <div class=" ml-auto col-lg-5 col-md-12 text-center">
             <div class="col-md-12  b-t-strong m-t-25">
               <h5 class="text-uppercase text-gray-light text-weight-light p-t-25 ">{{modelContent.p_name}} </h5>
               <h1 class="text-weight-light text-gray-light display-4"><sup class="dollar-class">$</sup>{{modelContent.p_price}}</h1>
