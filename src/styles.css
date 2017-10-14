@@ -1,0 +1,413 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+body
+{
+  background:#f4f4f4 !important;
+  font-family: 'Roboto', sans-serif;
+}
+.bg-white
+{
+  background:#fff;
+}
+.p-0 {
+  padding: 0px !important;
+}
+.p-l-0
+{
+   padding-left: 0px !important;
+}
+.p-r-0
+{
+   padding-right: 0px !important;
+}
+.p-5 {
+  padding: 5px !important;
+}
+
+.p-10 {
+  padding: 10px !important;
+}
+
+.p-15 {
+  padding: 15px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.p-25 {
+  padding: 25px !important;
+}
+
+.p-b-0 {
+  padding-bottom: 0px;
+}
+
+.p-b-5 {
+  padding-bottom: 5px;
+}
+
+.p-b-10 {
+  padding-bottom: 10px;
+}
+
+.p-b-15 {
+  padding-bottom: 15px;
+}
+
+.p-b-20 {
+  padding-bottom: 20px;
+}
+
+.p-b-25 {
+  padding-bottom: 25px;
+}
+
+.p-t-0 {
+  padding-top: 0px;
+}
+
+.p-t-5 {
+  padding-top: 5px;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.p-t-15 {
+  padding-top: 15px;
+}
+
+.p-t-20 {
+  padding-top: 20px;
+}
+
+.p-t-25 {
+  padding-top: 25px;
+}
+
+.m-5 {
+  margin: 5px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-15 {
+  margin: 15px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.m-25 {
+  margin: 25px;
+}
+
+.m-t-0 {
+  margin-top: 0px;
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
+.m-t-15 {
+  margin-top: 15px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-25 {
+  margin-top: 25px;
+}
+
+.m-b-0 {
+  margin-bottom: 0px;
+}
+
+.m-b-5 {
+  margin-bottom: 5px;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.m-b-20 {
+  margin-bottom: 20px;
+}
+
+.m-b-25 {
+  margin-bottom: 25px;
+}
+.m-r-0 {
+  margin-right: 0px !important;
+}
+
+.m-r-5 {
+  margin-right: 5px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.m-r-15 {
+  margin-right: 15px;
+}
+
+.m-r-20 {
+  margin-right: 20px;
+}
+
+.m-r-25 {
+  margin-right: 25px;
+}
+
+.m-l-0 {
+  margin-left: 0px !important;
+}
+
+.m-l-5 {
+  margin-left: 5px;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-l-15 {
+  margin-left: 15px;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+.m-l-25 {
+  margin-left: 25px;
+}
+
+.btn-promo {
+  background: #fff;
+  border: 1px solid #a09797;
+  padding: 10px 50px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.promo-text {
+  background: #fff;
+  border: 1px solid #a09797;
+  padding: 10px ;
+    font-weight: 500;
+
+}
+
+.h1,
+h1 {
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.head {
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 5px solid #dddbdc;
+}
+.full-width {
+  float: left;
+  width: 100%;
+}
+.b-t-slim
+{
+  border-top: 1px solid #e5e5e5;
+}
+.b-b-slim
+{
+  border-bottom: 1px solid #e5e5e5;
+}
+.b-t-strong
+{
+  border-top: 5px solid #dddbdc;
+}
+.b-0
+{
+  border: 0 !important;
+}
+.b-b-strong
+{
+  border-bottom: 5px solid #dddbdc;
+}
+.btn-cart
+{
+      background: #1069bd;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    padding: 10px 50px;
+        width: 100%;
+
+}
+.bold
+{
+  font-weight: 500 !important;
+}
+.legal
+{
+  font-size:10px;
+}
+
+.text-gray
+{
+  color:#767676;
+}
+.text-gray-dark
+{
+color: #5a5a5a;
+}
+.text-gray-darker
+{
+ color:#323232;
+}
+body
+{
+  font-size: 16px;
+}
+
+
+@media screen and (max-width: 767px)
+{
+
+  .display-xs-block
+  {
+  display: block
+  }
+.btn-cart
+{
+  width:100%;
+  margin-left: 0;
+  margin-bottom: 25px;
+}
+.btn-promo
+{
+    padding: 10px 30px;
+        margin-left: 10px;
+}
+}
+
+.swatch > span > span
+{
+    display: inline-block;
+    height: 18px;
+    width: 26px;
+    margin-left: 10px;
+
+
+}
+.swatch > span.active
+{
+
+
+}
+.form-group select {
+    background: url("./assets/images/down.png") center right no-repeat #fff;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+ .form-group:after, .form-group:before {
+    content: " ";
+    display: table;
+}
+.pdp .form-control {
+
+    height: 45px;
+    border-color: #bebebe;
+    color: #323232;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+
+.flex-box
+{
+  display: flex;
+}
+.flex-item
+{
+flex:1;
+}
+.qty
+{
+    width: 50px;
+    padding: 0 10px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+.text-gray-light
+{
+    color: #9a9a9a;
+
+}
+  .strike
+  {
+    text-decoration: line-through;
+  }
+.dollar-class
+{
+    top: -6px;
+    font-size: 14px;
+}
+h6 >.dollar-class
+{
+    top: -4px;
+    font-size: 11px;
+}
+.display-4 >.dollar-class
+{
+    top: -20px;
+    font-size: 20px;
+}
+ .modal-content
+{
+box-shadow: none ;
+ border: 0 ;
+ border-radius: 1px !important;
+}
+
+.modal-content>.close
+{
+    position: absolute;
+    right: 14px;
+    z-index: 9;
+    top: 10px;
+    font-size: 35px;
+    font-weight: 100;
+}
+.text-weight-light
+{
+  font-weight: 200 !important
+}
