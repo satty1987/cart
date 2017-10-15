@@ -1,219 +1,205 @@
 <section class="container m-t-20">
-  <div class="row">
-    <div class="col-md-12 col-xs-12 col-sm-12 bg-white">
-      <h1 class=" text-uppercase p-b-25 m-b-0  d-none d-sm-block p-t-25 b-b-slim">Your Shopping bag</h1>
-
-      <div class=" p-t-15 p-b-15 b-b-strong">
-        <div class="row">
-          <div class="col-sm-6  text-uppercase "><span class="d-inline d-sm-none" >Your shopping bag</span> {{cartCount}} Items </div>
-          <div class="col-2  text-uppercase text-right d-none d-sm-block"> Size</div>
-          <div class="col-2 text-uppercase text-right d-none d-sm-block">QTY </div>
-          <div class="col-2  text-uppercase text-right d-none d-sm-block">Price </div>
-        </div>
-      </div>
-
-      <article class="  m-b-25  p-t-15 p-b-15" [ngClass]="last ?'b-b-strong': ' b-b-slim'" *ngFor="let item of cartObject; let i =index; let last = last">
-         <div class="row">
-          <div class="col-sm-6   text-uppercase ">
-            <div class="media">
-              <img class="d-flex mr-3" src="../../../assets/images/T{{item.p_id}}.jpg" alt="Generic placeholder image">
-              <div class="media-body">
-                <h5 class="mt-0 text-gray">{{item.p_name}}</h5>
-                 <p class="small text-gray m-b-0  bold">style #:{{item.p_style}}</p>
-                 <p class="small text-gray  m-b-0 bold">Color :{{item.p_selected_color.name}}</p>
-                 <div class="d-inline d-sm-none" >
-                 <p class="small text-gray  m-b-10 bold">Size :{{item.p_selected_size.code}}</p>
-                 <p class="small text-gray m-b-20 bold">QTY : <input type="number" min="1" max="5" [(ngModel)]="item.p_quantity"
-           class="qty" (ngModelChange)="onChangeQty($event,i)"></p>
-            <h4 >
-              <span *ngIf="item.p_originalprice != item.p_price" class="text-gray-light strike">
-                <sup class="dollar-class">$</sup> {{item.p_originalprice | number : '1.2-2'}}
-              </span>
-             <sup class="dollar-class">$</sup>{{item.p_price | number : '1.2-2'}}
-            </h4></div>
-                   <div class="row" *ngIf="!isMobile">
-                <div class="col-12 m-t-25">
-                <p class="small text-gray"><span (click)="edit(item,i)">Edit</span> |
-                  <span (click)="removeCartItem(i,item)" >Remove</span> |
-                  Save for Later</p>
-                </div></div>
-            </div>
-
-              </div>
-     <div class="row" *ngIf="isMobile">
-                <div class="col-12 m-t-25 text-center">
-                <p class="small text-gray"><span (click)="edit(item,i)">Edit</span> |
-                  <span (click)="removeCartItem(i,item)" >Remove</span> |
-                  Save for Later</p>
-                </div></div>
-          </div>
-          <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block"> {{item.p_selected_size.code}}</div>
-          <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block">
-            <input type="number" min="1" max="5" [(ngModel)]="item.p_quantity"
-           class="qty" (ngModelChange)="onChangeQty($event,i)"> </div>
-          <div class="col-2 col-xs-12 col-sm-2 text-uppercase text-right d-none d-sm-block ">
-            <h4 *ngIf="item.p_originalprice != item.p_price" class="text-gray-light strike">
-             <sup class="dollar-class">$</sup> {{item.p_originalprice | number : '1.2-2'}}
-            </h4>
-            <h4> <sup class="dollar-class">$</sup>{{item.p_price | number : '1.2-2'}}</h4>
-
-          </div>
-         </div>
-      </article>
-
-
-
-      <!-- total section -->
-      <div class="col-md-12 col-xs-12 col-sm-12  p-0 m-t-25">
-        <div class="row">
-          <div class="col-md-12 col-lg-8 col-sm-12 order-lg-2 ml-auto  " *ngIf="cartObject.length>0">
+   <div class="row">
+      <div class="col-md-12 col-xs-12 col-sm-12 bg-white">
+         <h1 class=" text-uppercase p-b-25 m-b-0  d-none d-sm-block p-t-25 b-b-slim">Your Shopping bag</h1>
+         <div class=" p-t-15 p-b-15 b-b-strong">
             <div class="row">
-              <div class="col-md-5 col-xs-12 col-sm-12 ">
-                <p class="text-uppercase  text-center text-md-left">enter promotion code or gift card</p>
-              </div>
-              <div class="col-md-7 col-xs-12 col-sm-12 text-center text-md-right ">
-                <input type="text" name="promo" value="" class="promo-text text-uppercase" #couponcode>
-                <button type="submit" class="btn-promo text-uppercase" (click)="applyCoupon(couponcode.value)">Apply</button>
-              </div>
-              <div class="amount-block  col-12   m-t-25 ">
-                <div class="full-width b-t-strong   p-t-25">
-                  <div class="row">
-                  <div class=" col-8">
-                    <h6 class="text-gray-dark">Sub Total</h6>
-                     <p class="small text-gray">You are availing <span class="bold">{{discount}}%</span> discount</p>
-                  </div>
-                  <div class=" col-4  ">
-                    <h6 class="text-right text-gray-dark"><sup class="dollar-class">$</sup>{{subTotal | number : '1.2-2'}}</h6>
-                  </div>
-                </div>
-                </div>
-              </div>
-              <div class="promo-block  col-12  m-t-25 " *ngIf="showpromocode">
-                <div class="row">
-                <div class=" col-8  ">
-                  <h6 class="text-gray-dark">Promotion code <strong class="text-uppercase">{{coupon}}</strong> applied</h6>
-                </div>
-                <div class=" col-4  ">
-                  <h6 class="text-right text-gray-dark">- <sup class="dollar-class">$</sup>{{cartDiscount | number : '1.2-2'}}</h6>
-                </div>
-                </div>
-              </div>
-              <div class="shiping-block  col-12  m-t-25 ">
-                <div class="row">
-                <div class=" col-8  ">
-                  <h6 class="text-gray-dark">Estimate Shiping</h6>
-                  <p class="small text-gray">Your Shiping is free because your order is over 50</p>
-                </div>
-                <div class=" col-4  ">
-                  <h6 class="text-right text-gray-dark">Free</h6>
-                </div>
-              </div></div>
-
-              <div class="estomate-price-block  col-12   m-t-25 ">
-                <div class="full-width b-t-slim   p-t-25">
-                  <div class="row">
-                  <div class=" col-8  ">
-                    <h6 class="text-gray-dark">Estimated Total</h6>
-                    <p class="small text-gray">Tax will be applied during checkout</p>
-                  </div>
-                  <div class=" col-4  ">
-                    <h6 class="text-right text-gray-dark"><sup class="dollar-class">$</sup>{{estimate | number : '1.2-2'}}</h6>
-                  </div>
-                </div></div>
-
-              </div>
-
-              <div class="checkout-block  col-12   m-t-25 ">
-                <div class="full-width b-t-strong   p-t-25">
-                  <div class="  row align-items-center">
-
-                    <div class="order-md-2 col-md-4 "> <button class="btn-cart display-xs-block ">Checkout</button></div>
-                   <div class=" col-md-4 ml-auto text-center text-md-right"> <a href="" class="lead text-gray display-xs-block ">Continue Shopping</a></div>
-                  <div class="col-12 order-3">
-                    <p class="m-t-25 text-center text-lg-right text-gray">
-                       <img  src="../../../assets/images/lock.jpg"  /> Secure checkout, Shopping is always safe & secure</p>
-
-                   </div>
-                  </div>
-                     <div class="msg-note d-xs-block d-sm-none text-center p-t-25 p-b-25 m-t-25 b-t-slim">
-                      SIgn in tp save your cart and have access to your items on mobile,tablet and desktop
-                    </div>
-                  </div>
-
-
-
-              </div>
-
+               <div class="col-sm-6  text-uppercase "><span class="d-inline d-sm-none" >Your shopping bag</span> {{cartCount}} Items </div>
+               <div class="col-2  text-uppercase text-right d-none d-sm-block"> Size</div>
+               <div class="col-2 text-uppercase text-right d-none d-sm-block">QTY </div>
+               <div class="col-2  text-uppercase text-right d-none d-sm-block">Price </div>
             </div>
-          </div>
-          <div class="col-md-12 col-lg-2 col-sm-12 d-none d-sm-block " *ngIf="!isMobile">
-            <p class="bold "> <a href="" class="lead text-gray bold">Need Help or have questions ?</a></p>
-            <p> <a href="" class=" text-gray ">Call Customer Service at 1-800-555-5555</a></p>
-            <p> <a href="" class=" text-gray ">Chat with one of our stylists
-</a></p>
+         </div>
+          <!-- Product Grid Start -->
+         <article class="  m-b-25  p-t-15 p-b-15" [ngClass]="last ?'b-b-strong': ' b-b-slim'" *ngFor="let item of cartObject; let i =index; let last = last">
+         <div class="row">
+            <div class="col-sm-6   text-uppercase ">
+               <div class="media">
+                  <img class="d-flex mr-3" src="../../../assets/images/T{{item.p_id}}.jpg" alt="Generic placeholder image">
+                  <div class="media-body">
+                     <h5 class="mt-0 text-gray">{{item.p_name}}</h5>
+                     <p class="small text-gray m-b-0  bold">style #:{{item.p_style}}</p>
+                     <p class="small text-gray  m-b-0 bold">Color :{{item.p_selected_color.name}}</p>
+                     <div class="d-inline d-sm-none" >
+                        <p class="small text-gray  m-b-10 bold">Size :{{item.p_selected_size.code}}</p>
+                        <p class="small text-gray m-b-20 bold">QTY : <input type="number" min="1" max="5" [(ngModel)]="item.p_quantity"
+                           class="qty" (ngModelChange)="onChangeQty($event,i)">
+                        </p>
+                        <h4 >
+                           <span *ngIf="item.p_originalprice != item.p_price" class="text-gray-light strike">
+                           <sup class="dollar-class">$</sup> {{item.p_originalprice | number : '1.2-2'}}
+                           </span>
+                           <sup class="dollar-class">$</sup>{{item.p_price | number : '1.2-2'}}
+                        </h4>
+                     </div>
+                     <div class="row" *ngIf="!isMobile">
+                        <div class="col-12 m-t-25">
+                           <p class="small text-gray"><span (click)="edit(item,i)">Edit</span> |
+                              <span (click)="removeCartItem(i,item)" >Remove</span> |
+                              Save for Later
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row" *ngIf="isMobile">
+                  <div class="col-12 m-t-25 text-center">
+                     <p class="small text-gray"><span (click)="edit(item,i)">Edit</span> |
+                        <span (click)="removeCartItem(i,item)" >Remove</span> |
+                        Save for Later
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block"> {{item.p_selected_size.code}}</div>
+            <div class="col-2  col-sm-2 text-uppercase text-right d-none d-sm-block">
+               <input type="number" min="1" max="5" [(ngModel)]="item.p_quantity"
+               class="qty" (ngModelChange)="onChangeQty($event,i)">
+            </div>
+            <div class="col-2 col-xs-12 col-sm-2 text-uppercase text-right d-none d-sm-block ">
+               <h4 *ngIf="item.p_originalprice != item.p_price" class="text-gray-light strike">
+                  <sup class="dollar-class">$</sup> {{item.p_originalprice | number : '1.2-2'}}
+               </h4>
+               <h4> <sup class="dollar-class">$</sup>{{item.p_price | number : '1.2-2'}}</h4>
+            </div>
+         </div>
+         </article>
+         <!-- Product grid end -->
+         <!-- cart price calculation section start -->
+         <div class="col-md-12 col-xs-12 col-sm-12  p-0 m-t-25">
+            <div class="row">
+               <div class="col-md-12 col-lg-8 col-sm-12 order-lg-2 ml-auto  " *ngIf="cartObject.length>0">
+                  <div class="row">
+                     <div class="col-md-5 col-xs-12 col-sm-12 ">
+                        <p class="text-uppercase  text-center text-md-left">enter promotion code or gift card</p>
+                     </div>
+                     <div class="col-md-7 col-xs-12 col-sm-12 text-center text-md-right ">
+                        <input type="text" name="promo" value="" class="promo-text text-uppercase" #couponcode>
+                        <button type="submit" class="btn-promo text-uppercase" (click)="applyCoupon(couponcode.value)">Apply</button>
+                     </div>
+                     <div class="amount-block  col-12   m-t-25 ">
+                        <div class="full-width b-t-strong   p-t-25">
+                           <div class="row">
+                              <div class=" col-8">
+                                 <h6 class="text-gray-dark">Sub Total</h6>
+                                 <p class="small text-gray">You are availing <span class="bold">{{discount}}%</span> discount</p>
+                              </div>
+                              <div class=" col-4  ">
+                                 <h6 class="text-right text-gray-dark"><sup class="dollar-class">$</sup>{{subTotal | number : '1.2-2'}}</h6>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="promo-block  col-12  m-t-25 " *ngIf="showpromocode">
+                        <div class="row">
+                           <div class=" col-8  ">
+                              <h6 class="text-gray-dark">Promotion code <strong class="text-uppercase">{{coupon}}</strong> applied</h6>
+                           </div>
+                           <div class=" col-4  ">
+                              <h6 class="text-right text-gray-dark">- <sup class="dollar-class">$</sup>{{cartDiscount | number : '1.2-2'}}</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="shiping-block  col-12  m-t-25 ">
+                        <div class="row">
+                           <div class=" col-8  ">
+                              <h6 class="text-gray-dark">Estimate Shiping</h6>
+                              <p class="small text-gray">Your Shiping is free because your order is over 50</p>
+                           </div>
+                           <div class=" col-4  ">
+                              <h6 class="text-right text-gray-dark">Free</h6>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="estomate-price-block  col-12   m-t-25 ">
+                        <div class="full-width b-t-slim   p-t-25">
+                           <div class="row">
+                              <div class=" col-8  ">
+                                 <h6 class="text-gray-dark">Estimated Total</h6>
+                                 <p class="small text-gray">Tax will be applied during checkout</p>
+                              </div>
+                              <div class=" col-4  ">
+                                 <h6 class="text-right text-gray-dark"><sup class="dollar-class">$</sup>{{estimate | number : '1.2-2'}}</h6>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="checkout-block  col-12   m-t-25 ">
+                        <div class="full-width b-t-strong   p-t-25">
+                           <div class="  row align-items-center">
+                              <div class="order-md-2 col-md-4 "> <button class="btn-cart display-xs-block ">Checkout</button></div>
+                              <div class=" col-md-4 ml-auto text-center text-md-right"> <a href="" class="lead text-gray display-xs-block ">Continue Shopping</a></div>
+                              <div class="col-12 order-3">
+                                 <p class="m-t-25 text-center text-lg-right text-gray">
+                                    <img  src="../../../assets/images/lock.jpg"  /> Secure checkout, Shopping is always safe & secure
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="msg-note d-xs-block d-sm-none text-center p-t-25 p-b-25 m-t-25 b-t-slim">
+                              SIgn in tp save your cart and have access to your items on mobile,tablet and desktop
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
 
-            <p> <a href="" class=" text-gray ">See return & exchange policy</a></p>
-          </div>
-        </div>
+                 <!-- cart price calculation section end -->
+
+                   <!-- customer support section start -->
+               <div class="col-md-12 col-lg-2 col-sm-12 d-none d-sm-block " *ngIf="!isMobile">
+                  <p class="bold "> <a href="" class="lead text-gray bold">Need Help or have questions ?</a></p>
+                  <p> <a href="" class=" text-gray ">Call Customer Service at 1-800-555-5555</a></p>
+                  <p> <a href="" class=" text-gray ">Chat with one of our stylists
+                     </a>
+                  </p>
+                  <p> <a href="" class=" text-gray ">See return & exchange policy</a></p>
+               </div>
+
+                 <!-- customer support section end -->
+            </div>
+         </div>
       </div>
-    </div>
-
-  </div>
+   </div>
 </section>
-
-
-
-<!-- Modal -->
+  <!-- product view modal start -->
 <div class="modal fade pdp" appModal id="exampleModal" *ngIf="isOpen" [ngClass]="{'show d-block': isOpen}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-
-
-        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
+<div class="modal-dialog modal-lg" role="document">
+   <div class="modal-content">
+      <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
       <div class="modal-body">
-        <div class="row p-t-25">
-             <div class="col-lg-6 col-md-12 order-lg-2 text-center"><img class="img-fluid" src="../../../assets/images/T{{modelContent.p_id}}.jpg" /></div>
-          <div class=" ml-auto col-lg-5 col-md-12 text-center">
-            <div class="col-md-12  b-t-strong m-t-25">
-              <h5 class="text-uppercase text-gray-light text-weight-light p-t-25 ">{{modelContent.p_name}} </h5>
-              <h1 class="text-weight-light text-gray-light display-4"><sup class="dollar-class">$</sup>{{modelContent.p_price}}</h1>
-       <h6 class="text-uppercase text-gray-light text-weight-light p-t-25">{{modelContent.p_variation}} </h6>
-              <div class="swatch">
-                <span class="" *ngFor="let item of modelContent.p_available_options.colors">
-                  <span [ngStyle]="{background:item.hexcode}" [ngClass]="{'active-swatch': item.hexcode==modelContent.p_selected_color.hexcode}"></span></span>
-
-              </div>
-              <div class=" text-center row p-t-20">
-                <div class="form-group col-6">
-                  <select title="select me" class="form-control" #qty>
-
-                      <option  *ngFor="let c of [1,2,3,4,5]" value="{{c}}">QTY {{c}}</option>
-
-
-                </select>
-                </div>
-                <div class="form-group col-6">
-
-                  <select   class="form-control text-uppercase" #size>
-                     <option value="{{modelContent.p_selected_size.code}}|{{modelContent.p_selected_size.name}}">Size</option>
-                  <option  *ngFor="let c of modelContent.p_available_options.sizes" value="{{c.code}}|{{c.name}}">{{c.name}}</option>
-                  </select>
-                </div>
-              </div>
-              <p> <button class="btn-cart display-xs-block col-md-8 m-t-10" (click)="updateCart(qty.value, size.value, modelContent.selectedIndex)">Update</button></p>
-
-
+         <div class="row p-t-25">
+            <div class="col-lg-6 col-md-12 order-lg-2 text-center"><img class="img-fluid" src="../../../assets/images/T{{modelContent.p_id}}.jpg" /></div>
+            <div class=" ml-auto col-lg-5 col-md-12 text-center">
+               <div class="col-md-12  b-t-strong m-t-25">
+                  <h5 class="text-uppercase text-gray-light text-weight-light p-t-25 ">{{modelContent.p_name}} </h5>
+                  <h1 class="text-weight-light text-gray-light display-4"><sup class="dollar-class">$</sup>{{modelContent.p_price}}</h1>
+                  <h6 class="text-uppercase text-gray-light text-weight-light p-t-25">{{modelContent.p_variation}} </h6>
+                  <div class="swatch">
+                     <span class="" *ngFor="let item of modelContent.p_available_options.colors">
+                     <span [ngStyle]="{background:item.hexcode}" [ngClass]="{'active-swatch': item.hexcode==modelContent.p_selected_color.hexcode}"></span></span>
+                  </div>
+                  <div class=" text-center row p-t-20">
+                     <div class="form-group col-6">
+                        <select title="select me" class="form-control" #qty>
+                           <option  *ngFor="let c of [1,2,3,4,5]" value="{{c}}">QTY {{c}}</option>
+                        </select>
+                     </div>
+                     <div class="form-group col-6">
+                        <select   class="form-control text-uppercase" #size>
+                           <option value="{{modelContent.p_selected_size.code}}|{{modelContent.p_selected_size.name}}">Size</option>
+                           <option  *ngFor="let c of modelContent.p_available_options.sizes" value="{{c.code}}|{{c.name}}">{{c.name}}</option>
+                        </select>
+                     </div>
+                  </div>
+                  <p> <button class="btn-cart display-xs-block col-md-8 m-t-10" (click)="updateCart(qty.value, size.value, modelContent.selectedIndex)">Update</button></p>
+               </div>
             </div>
-          </div>
-
-        </div>
+         </div>
       </div>
-
-    </div>
-  </div>
-
+   </div>
 </div>
- <div class="modal-backdrop fade show"   *ngIf="isOpen"></div>
+</div>
+  <!-- product view modal end -->
+<div class="modal-backdrop fade show"   *ngIf="isOpen"></div>
