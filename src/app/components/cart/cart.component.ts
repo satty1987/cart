@@ -95,21 +95,28 @@ getBreakpoint() {
 const windowWidth = window.innerWidth;
 
       if (windowWidth < 576) {
-     this.isMobile = true;
+     this.viewport(true, false, false, false);
      console.log('mobile View');
       } else if (windowWidth >= 577 && windowWidth < 767) {
-       this.isTab = true;
+        this.viewport(false, true, false, false);
        console.log('tablet View');
       } else if (windowWidth >= 768 && windowWidth < 1199) {
-      this.isMedDevice = true;
+      this.viewport(false, false, true, false);
       console.log('medium device View');
       } else if (windowWidth >= 1200) {
-       this.isLargeDevice = true;
+       this.viewport(false, false, false, true);
        console.log('large desktop View');
       }
       }
+  viewport(xs, sm, md, lg) {
+      this.isMobile = xs;
+      this.isTab = sm;
+      this.isMedDevice = md;
+      this.isLargeDevice = lg;
+     }
+
    @HostListener('window:resize', ['$event'])
-onResize(event) {
- this.getBreakpoint();
-}
+    onResize(event) {
+     this.getBreakpoint();
+    }
 }
