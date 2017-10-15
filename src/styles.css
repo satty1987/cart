@@ -317,9 +317,9 @@ body
 
 
 }
-.swatch > span.active
+p > span
 {
-
+cursor: pointer;
 
 }
 .form-group select {
