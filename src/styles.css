@@ -227,10 +227,6 @@ h1 {
   font-size: 50px;
 }
 
-.head {
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 5px solid #dddbdc;
-}
 .full-width {
   float: left;
   width: 100%;
@@ -410,4 +406,15 @@ box-shadow: none ;
 .text-weight-light
 {
   font-weight: 200 !important
+}
+.active-swatch
+{
+border: 2px solid #080808;
+}
+@media (min-width: 768px)
+{
+  .btn-promo
+  {
+    padding: 10px 32px;
+  }
 }
