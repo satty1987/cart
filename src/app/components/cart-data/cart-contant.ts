@@ -26,7 +26,9 @@ export const CART_DATA = {
                {
                   "name":"red",
                   "hexcode":"#ED99A8"
-               }
+               },
+                {'name': "blue", 'hexcode': "#1169BD"}
+
             ],
             "sizes":[
                {
@@ -182,7 +184,11 @@ export const CART_DATA = {
                {
                   "name":"red",
                   "hexcode":"#ED99A8"
-               }
+               },
+                {
+            "name":"red",
+            "hexcode":""
+         }
             ],
             "sizes":[
                {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, DoCheck } from '@angular/core';
+import { Component, OnInit, ElementRef, DoCheck , HostListener } from '@angular/core';
 import { CART_DATA } from '../cart-data/cart-contant';
 import * as _ from 'lodash';
 
@@ -19,6 +19,11 @@ export class CartComponent implements OnInit, DoCheck {
   public couponCode: any = {};
   public showpromocode: Boolean = true;
   public modelContent: any = { };
+  public isMobile: Boolean = false;
+  public isTab: Boolean = false;
+  public isMedDevice: Boolean = false;
+  public isLargeDevice: Boolean = false;
+
   constructor() {}
 
   ngOnInit() {
@@ -30,6 +35,8 @@ export class CartComponent implements OnInit, DoCheck {
       'coupon3': 15,
       'coupon4': 20,
     };
+     this.getBreakpoint();
+
   }
   public cartTotal() {
     this.cartCount = _.sumBy(this.cartObject, 'p_quantity');
@@ -82,5 +89,27 @@ this.cartObject.splice(index , 1 );
 ngDoCheck() {
   this.cartTotal();
   this.estimateTotal();
+
   }
+getBreakpoint() {
+const windowWidth = window.innerWidth;
+
+      if (windowWidth < 576) {
+     this.isMobile = true;
+     console.log('mobile View');
+      } else if (windowWidth >= 577 && windowWidth < 767) {
+       this.isTab = true;
+       console.log('tablet View');
+      } else if (windowWidth >= 768 && windowWidth < 1199) {
+      this.isMedDevice = true;
+      console.log('medium device View');
+      } else if (windowWidth >= 1200) {
+       this.isLargeDevice = true;
+       console.log('large desktop View');
+      }
+      }
+   @HostListener('window:resize', ['$event'])
+onResize(event) {
+ this.getBreakpoint();
+}
 }
