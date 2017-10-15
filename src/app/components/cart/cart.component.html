@@ -174,7 +174,14 @@
             <div class=" ml-auto col-lg-5 col-md-12 text-center">
                <div class="col-md-12  b-t-strong m-t-25">
                   <h5 class="text-uppercase text-gray-light text-weight-light p-t-25 ">{{modelContent.p_name}} </h5>
-                  <h1 class="text-weight-light text-gray-light display-4"><sup class="dollar-class">$</sup>{{modelContent.p_price}}</h1>
+                  <h1 class="text-weight-light text-gray-light display-4">
+
+                   <span *ngIf="modelContent.p_originalprice != modelContent.p_price" class="text-gray-light strike">
+                           <sup class="dollar-class">$</sup>{{modelContent.p_originalprice | number : '1.2-2'}}
+                           </span>
+                           <sup class="dollar-class">$</sup>{{modelContent.p_price | number : '1.2-2'}}
+
+                  </h1>
                   <h6 class="text-uppercase text-gray-light text-weight-light p-t-25">{{modelContent.p_variation}} </h6>
                   <div class="swatch">
                      <span class="" *ngFor="let item of modelContent.p_available_options.colors">
