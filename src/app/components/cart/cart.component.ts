@@ -78,7 +78,8 @@ export class CartComponent implements OnInit, DoCheck {
     }
 
     public applyCoupon(coupon: any) {
-        this.cartDiscount = this.couponCode[coupon] ? this.couponCode[coupon] : 0;
+        const couponCode = _.toLower(coupon);
+        this.cartDiscount = this.couponCode[couponCode] ? this.couponCode[couponCode] : 0;
         this.showpromocode = this.cartDiscount > 0 ? true : false;
         this.coupon = coupon;
     }
